@@ -1,0 +1,22 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract SquareRootCalculator {
+
+    // Function to compute the square root of a number
+    function squareRoot(uint256 number) public pure returns (uint256) {
+        require(number >= 0, "Input must be a non-negative integer");
+
+        // Start with an estimate (number / 2)
+        uint256 guess = number;
+        uint256 result = (guess + number / guess) / 2;
+
+        // Use Babylonian method to improve the estimate
+        while (result < guess) {
+            guess = result;
+            result = (guess + number / guess) / 2;
+        }
+
+        return guess;
+    }
+}
