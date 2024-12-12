@@ -1,0 +1,21 @@
+// Specify the Solidity version
+pragma solidity ^0.8.0;
+
+/// @title VotingSystem - A simple voting contract
+contract VotingSystem {
+    // Mapping to store the vote count for each candidate
+    mapping(string => uint256) private voteCount;
+
+    /// @notice Cast a vote for a candidate
+    /// @param candidate The name of the candidate to vote for
+    function vote(string memory candidate) public {
+        voteCount[candidate]++;
+    }
+
+    /// @notice Get the vote count for a specific candidate
+    /// @param candidate The name of the candidate
+    /// @return The number of votes the candidate has received
+    function getVoteCount(string memory candidate) public view returns (uint256) {
+        return voteCount[candidate];
+    }
+}
