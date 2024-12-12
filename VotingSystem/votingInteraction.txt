@@ -1,0 +1,14 @@
+// Step 1: Get the contract instance
+const VotingSystem = await VotingSystem.deployed();
+
+// Step 2: Cast votes
+await VotingSystem.vote("Alice", { from: accounts[0] });
+await VotingSystem.vote("Bob", { from: accounts[1] });
+await VotingSystem.vote("Alice", { from: accounts[2] });
+
+// Step 3: Get vote counts
+const aliceVotes = await VotingSystem.getVoteCount("Alice");
+console.log("Alice's votes:", aliceVotes.toString());
+
+const bobVotes = await VotingSystem.getVoteCount("Bob");
+console.log("Bob's votes:", bobVotes.toString());
